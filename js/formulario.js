@@ -50,60 +50,39 @@ function salvarDados(req) {
                 text = "Atualizado"
             }
             $.blockUI({ message: "<h3 style='font-style: italic;'>Loading...</h3>" });
-            setTimeout(() => {
-                fetch(req, {
-                    method: mt,
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
+
+            fetch(req, {
+                method: mt,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        alert('ERRO AO CADASTRAR');
+                        throw new Error('Erro ao enviar requisição.');
+                    }
+                    return response.json();
                 })
-                    .then(response => {
-                        if (!response.ok) {
-                            alert('ERRO AO CADASTRAR');
-                            throw new Error('Erro ao enviar requisição.');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        toast(`Cliente ${text}`, 'OK', 'success')
-                        if (text === "Cadatrado") {
-                            console.log('Resposta da API:', data);
-                        } else {
-                            setTimeout(() => {
-                                window.location.href = "buscar.html";
-                            }, 3000);
-                        }
-                    })
-                    .catch(error => {
-                        alert('ERROR IN REQUEST');
-                        console.error('Erro:', error);
-                    });
-                // fetch('http://localhost:8080/end-point/Serv?opcao=insertDadosAPI', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //     },
-                //     body: JSON.stringify(data),
-                // })
-                //     .then(response => {
-                //         if (!response.ok) {
-                //             alert('ERRO AO CADASTRAR');
-                //             throw new Error('Erro ao enviar requisição.');
-                //         }
-                //         return response.json();
-                //     })
-                //     .then(data => {
-                //         toast('Cliente Cadastrado', 'OK', 'success')
-                //         console.log('Resposta da API:', data);
-                //     })
-                //     .catch(error => {
-                //         alert('ERROR IN REQUEST');
-                //         console.error('Erro:', error);
-                //     });
-                $('#nome').val("")
-                $('#idade').val("")
-                $('#altura').val("")
+                .then(data => {
+                    toast(`Cliente ${text}`, 'OK', 'success')
+                    if (text === "Cadatrado") {
+                        console.log('Resposta da API:', data);
+                    } else {
+                        setTimeout(() => {
+                            window.location.href = "buscar.html";
+                        }, 3000);
+                    }
+                })
+                .catch(error => {
+                    alert('ERROR IN REQUEST');
+                    console.error('Erro:', error);
+                });
+            $('#nome').val("")
+            $('#idade').val("")
+            $('#altura').val("")
+            setTimeout(() => {
                 $.unblockUI();
             }, 2000);
         }

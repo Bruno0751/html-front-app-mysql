@@ -48,4 +48,5 @@ document.write("<meta name='viewport' content='width=device-width, initial-scale
         <link rel='stylesheet' type='text/css' href='style/jquery/jquery-toast-plugin-1.3.2.min.css'>\n\
         <script src='js/jquery/jquery-3.7.1.min.js'></script>\n\
         <script src='js/jquery/query.toast-1.3.2.min.js'></script>\n\
+        <script src='js/jquery/jquery.blockUI-2.70.0.min.js'></script>\n\
         <script src='js/util.js'></script>");
