@@ -42,7 +42,7 @@ function salvarDados(req) {
             let mt, text
             if (req === "insert") {
                 mt = 'POST'
-                req = 'http://localhost:9090/v1/cliente'
+                req = 'http://localhost:9090/v1/cliente/'
                 text = "Cadastrado"
             } else if (req === "update") {
                 mt = 'PUT'

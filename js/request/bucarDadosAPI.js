@@ -1,5 +1,5 @@
 function buscarDados() {
-    fetch("http://localhost:9090/v1/cliente", {
+    fetch("http://localhost:9090/v1/cliente/", {
         method: 'GET',
     })
         .then(response => {
